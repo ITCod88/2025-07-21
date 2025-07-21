@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Member Update</h1>
+	<form action="/member/update" method="post">
+		<input type="hidden" th:field="${dto.memberno}">
+		<table th:object="${dto}">
+			<tr>
+				<th>Memberid</th>
+				<td><input type="text" th:field="*{memberid}"></td>
+			</tr>
+			<tr>
+				<th>Memberpw</th>
+				<td><input type="text" th:field="*{memberpw}"></td>
+			</tr>
+			<tr>
+				<th>Membername</th>
+				<td><input type="text" th:field="*{membername}"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="수정완료">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
