@@ -5,6 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.boot.jpa.model.entity.JpaEntity;
@@ -22,4 +25,12 @@ public interface JpaDao extends JpaRepository<JpaEntity, Integer> {
 	@Transactional
 	public void deleteByMyno(int myno);
 	//데이터 변경 등의 작업을 실행하기위해 Transactional을 어노테이션해야한다. (내부적으로 만들어진 메서드가 아닌 임의로 생성한 메서드는 Transactional을 설정해야한다.)
+
+	//개발자가 jpql을 작성해 실행한다.
+	@Modifying
+	@Query("DELETE FROM JpaEntity j WHERE j.myno= :myno")
+	@Transactional
+	public void delBoard(@Param("myno")int myno);
+	
+
 }

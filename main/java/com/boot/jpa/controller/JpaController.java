@@ -86,7 +86,10 @@ public class JpaController {
 		System.out.println("[delete]");
 		
 		//dao.deleteById(myno);
-		dao.deleteByMyno(myno);
+		//dao.deleteByMyno(myno);
+		
+		//쿼리문 명시하여 실행
+		dao.delBoard(myno);
 		
 		return "redirect:/board/list";
 	}
